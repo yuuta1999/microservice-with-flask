@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  # user backend with multiple 
+  users:
+    build:
+      context: ./services/users
+      dockerfile: Dockerfile
+    volumes:
+      - './services/users:/usr/src/app'
+    ports:
+      - 5000:5000
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=microservice
+      - APP_SETTINGS=app.config.DevConfig
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_SERVER}:${POSTGRES_LISTEN_PORT}/${POSTGRES_DB}
+      - DATABASE_URL_TEST=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_SERVER}:${POSTGRES_LISTEN_PORT}/${POSTGRES_DB_TEST}
+    #depends_on:
+    #  - users-db
+    networks: 
+      default:
+        aliases:
+          - ${DOMAIN}

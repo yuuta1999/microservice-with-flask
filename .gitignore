@@ -1,0 +1,7 @@
+# directories
+.vscode/
+__pycache__/
+XDG_CACHE_HOME/
+
+# files
+Pipfile.lock

@@ -1,0 +1,31 @@
+# A consistent coding styles.
+
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_size = 2
+indent_style = 4
+
+[*.{js, py}]
+charset = utf-8
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+[*.conf]
+indent_style = tab
+
+[{Dockerfile, docker-compose*.yml}]
+indent_style = space
+indent_size = 2
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+
