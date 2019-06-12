@@ -13,11 +13,21 @@ services:
       - FLASK_ENV=development
       - SECRET_KEY=microservice
       - APP_SETTINGS=app.config.DevConfig
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_SERVER}:${POSTGRES_LISTEN_PORT}/${POSTGRES_DB}
-      - DATABASE_URL_TEST=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_SERVER}:${POSTGRES_LISTEN_PORT}/${POSTGRES_DB_TEST}
-    #depends_on:
-    #  - users-db
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@users-db:${POSTGRES_LISTEN_PORT}/${POSTGRES_DB}
+      - DATABASE_URL_TEST=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@users-db:${POSTGRES_LISTEN_PORT}/${POSTGRES_DB_TEST}
+    depends_on:
+      - users-db
     networks: 
       default:
         aliases:
           - ${DOMAIN}
+
+  users-db:
+    build:
+      context: ./services/users/app/db
+      dockerfile: Dockerfile
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}

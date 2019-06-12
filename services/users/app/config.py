@@ -9,6 +9,7 @@ class BaseConfig(object):
     TESTING = False
     DEBUG = os.environ.get('FLASK_ENV') == 'development'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    ACCESS_TOKEN_EXPIRE = 30
 
 class DevConfig(BaseConfig):
     """Environment variables used in development mode.
@@ -20,3 +21,4 @@ class TestConfig(BaseConfig):
     """
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL_TEST')
     TESTING = True
+    ACCESS_TOKEN_EXPIRE = 1
