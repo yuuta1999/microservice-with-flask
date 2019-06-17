@@ -20,12 +20,32 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow(), nullable=False)
     modified_at = db.Column(db.DateTime, default=datetime.datetime.utcnow(), nullable=False)
 
-    roles = db.relationship('Roles', backref='users', lazy=True)
+    roles = db.relationship(
+        Roles, 
+        backref='users', 
+        primaryjoin="User.username==Roles.username",
+        foreign_keys=[Roles.__table__.c.username],      # Table: Roles, column: username
+        passive_deletes=True,                           # Update the table
+        cascade='all'                                   # Can drop all the table
+    )
 
     def __init__(self, username, password, email):
         self.username = username
         self.password = hash_pwd_with_bcrypt(pwd=password)
         self.email = email
 
-    
+        self.is_active = True
+        self.is_admin = False
 
+        self.created_at = datetime.datetime.utcnow()
+        self.modified_at = datetime.datetime.utcnow()
+
+    def __str__(self):
+        return f"<User {self.username}>"
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email
+        }

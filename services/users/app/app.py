@@ -4,9 +4,10 @@ import os
 
 from flask import Flask
 
-from .api.utils.extensions import (
+from app.api.utils.extensions import (
     db, bcrypt, jwt
 )
+from app.api.utils.func import JSONEncoder
 
 def create_app(app_info=None):
     """Create Flask application in factory pattern
@@ -21,6 +22,8 @@ def create_app(app_info=None):
 
     from .api.views import user_api as user_bp
     app.register_blueprint(user_bp, url_prefix='/v1/api/')
+
+    app.json_encoder = JSONEncoder
 
     @app.route('/')
     def index():

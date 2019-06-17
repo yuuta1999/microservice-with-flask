@@ -16,6 +16,6 @@ user_api.add_url_rule('/register', view_func=register_view, methods=['POST'])
 
 # user view
 user_view = UserAPI.as_view('user_view')
-user_api.add_url_rule('/users/<int:user_id>', view_func=user_view, methods=['GET', 'PUT', 'DELETE'])
+user_api.add_url_rule('/users/<string:username>', view_func=user_view, methods=['GET', 'PUT', 'DELETE'])
 user_api.add_url_rule('/users', view_func=user_view, methods=['GET', 'POST'])
 

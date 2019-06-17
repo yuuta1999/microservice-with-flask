@@ -2,6 +2,8 @@
 .vscode/
 __pycache__/
 XDG_CACHE_HOME/
+htmlcov/
+coverage_html_report/
 
 # files
 Pipfile.lock

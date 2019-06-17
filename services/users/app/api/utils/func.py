@@ -1,13 +1,36 @@
 # users/app/api/utils/func.py
 
+import json
 import datetime as dt
 
 from .extensions import bcrypt, db
 
 def get_user_by_username(username, db_model):
-    """Take username from request and return user object.
+    """Take username from request and return user object if existed.
     """
     return db_model.query.filter(db_model.username == username).first()
+
+def get_attr_from_obj(obj, exception=None):
+    """Get some attributes from user object.
+    """
+    return dict([(k,v) for k,v in vars(obj).items() if k != exception and not k.startswith('_')])
+
+def get_all_user(db_model):
+    """Take username from request and return user object if existed.
+    """
+    users = db_model.query.all()
+    return list([get_attr_from_obj(user, 'password') for user in users])
+
+
+def get_role(username, role_db):
+    """Take username from user and return its role.
+    """
+    return role_db.query.filter(role_db.username == username).first()
+
+def get_user_by_email(email, db_model):
+    """Take an email from request and return user object if existed.
+    """
+    return db_model.query.filter(db_model.email == email).first()
 
 def hash_pwd_with_bcrypt(pwd):
     """Hash password with Bcrypt algorithm.
@@ -30,7 +53,7 @@ def update_user(user_obj, data):
     """
     for k,v in data.items():
         if k == 'password':
-            user_obj.password = hash_pwd_with_bcrypt(v)
+            v = hash_pwd_with_bcrypt(v)
         setattr(user_obj, k, v)
     user_obj.modified_at = dt.datetime.utcnow()
     db.session.commit()
@@ -41,4 +64,12 @@ def delete_user(user_obj):
     db.session.delete(user_obj)
     db.session.commit()
 
-
+from app.api.models.user import User
+class JSONEncoder(json.JSONEncoder):
+    """Make some stuff serializable
+    """
+    def default(self, o):
+        if isinstance(o, dt.datetime):
+            return str(o)
+        if isinstance(o, User):
+            return str(o)
