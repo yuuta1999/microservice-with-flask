@@ -10,6 +10,7 @@ flask-jwt-extended==3.18.2
 flask-sqlalchemy==2.4.0
 flask-testing==0.7.1
 flask==1.0.3
+gunicorn==19.9.0
 itsdangerous==1.1.0
 jinja2==2.10.1
 markupsafe==1.1.1
