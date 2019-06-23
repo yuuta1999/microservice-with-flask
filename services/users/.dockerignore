@@ -1,0 +1,7 @@
+__pycache__/
+XDG_CACHE_HOME/
+.vscode/
+coverage_html_report/
+htmlcov/
+
+Pipfile.lock
