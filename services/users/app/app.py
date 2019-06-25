@@ -21,7 +21,7 @@ def create_app(app_info=None):
     jwt.init_app(app)
 
     from .api.views import user_api as user_bp
-    app.register_blueprint(user_bp, url_prefix='/v1/api/')
+    app.register_blueprint(user_bp, url_prefix='/v1/')
 
     app.json_encoder = JSONEncoder
 

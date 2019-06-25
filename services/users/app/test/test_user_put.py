@@ -28,7 +28,7 @@ class TestUserPutMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -41,7 +41,7 @@ class TestUserPutMethod(BaseTestCase):
 
             data_login = json.loads(res_login.data.decode())
             response = self.client.put(
-                f'/v1/api/users/{user.username}',
+                f'/v1/users/{user.username}',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -76,7 +76,7 @@ class TestUserPutMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -89,7 +89,7 @@ class TestUserPutMethod(BaseTestCase):
 
             data_login = json.loads(res_login.data.decode())
             response = self.client.put(
-                f'/v1/api/users/{user.username}',
+                f'/v1/users/{user.username}',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -103,7 +103,7 @@ class TestUserPutMethod(BaseTestCase):
 
             data = json.loads(response.data.decode())
             res = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -143,7 +143,7 @@ class TestUserPutMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -156,7 +156,7 @@ class TestUserPutMethod(BaseTestCase):
 
             data_login = json.loads(res_login.data.decode())
             response = self.client.put(
-                f'/v1/api/users/{user.username}',
+                f'/v1/users/{user.username}',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -190,7 +190,7 @@ class TestUserPutMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -203,7 +203,7 @@ class TestUserPutMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             res_test = self.client.post(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -219,7 +219,7 @@ class TestUserPutMethod(BaseTestCase):
             data_test = json.loads(res_test.data.decode())
 
             response = self.client.put(
-                '/v1/api/users/test',
+                '/v1/users/test',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -254,7 +254,7 @@ class TestUserPutMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -267,7 +267,7 @@ class TestUserPutMethod(BaseTestCase):
 
             data_login = json.loads(res_login.data.decode())
             response = self.client.put(
-                f'/v1/api/users/{user.username}',
+                f'/v1/users/{user.username}',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -281,7 +281,7 @@ class TestUserPutMethod(BaseTestCase):
 
             data = json.loads(response.data.decode())
             res = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -321,7 +321,7 @@ class TestUserPutMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -334,7 +334,7 @@ class TestUserPutMethod(BaseTestCase):
 
             data_login = json.loads(res_login.data.decode())
             response = self.client.put(
-                f'/v1/api/users/{user.username}',
+                f'/v1/users/{user.username}',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -368,7 +368,7 @@ class TestUserPutMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -381,7 +381,7 @@ class TestUserPutMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             res_test = self.client.post(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -397,7 +397,7 @@ class TestUserPutMethod(BaseTestCase):
             data_test = json.loads(res_test.data.decode())
 
             response = self.client.put(
-                '/v1/api/users/test',
+                '/v1/users/test',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',

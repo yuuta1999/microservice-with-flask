@@ -8,7 +8,7 @@ services:
     volumes:
       - './services/users:/usr/src/app'
     ports:
-      - 5000:5000
+      - '5000:5000'
     environment:
       - FLASK_ENV=development
       - SECRET_KEY=microservice
@@ -22,12 +22,41 @@ services:
         aliases:
           - ${DOMAIN}
 
+  nginx:
+      build:
+        context: ./services/nginx
+        dockerfile: Dockerfile
+      restart: always
+      ports:
+        - 80:80
+        - 443:443
+      depends_on:
+        - users
+        - client
+        - pgadmin
+
   users-db:
     build:
       context: ./services/users/app/db
       dockerfile: Dockerfile
     ports:
-      - 5432:5432
+      - '5432:5432'
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+  client:
+    build:
+      context: ./services/client
+      dockerfile: Dockerfile
+      
+  pgadmin:
+    image: dpage/pgadmin4
+    ports: 
+      - '5050:5050'
+    environment:
+      - PGADMIN_LISTEN_PORT=5050
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    depends_on:
+      - users-db

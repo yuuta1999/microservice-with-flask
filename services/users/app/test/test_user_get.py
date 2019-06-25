@@ -27,7 +27,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             response = self.client.get(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -55,7 +55,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             response = self.client.get(
-                '/v1/api/users/admin',
+                '/v1/users/admin',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -94,7 +94,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -107,7 +107,7 @@ class TestUserGetMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.get(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -147,7 +147,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -160,7 +160,7 @@ class TestUserGetMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.get(
-                '/v1/api/users/admin',
+                '/v1/users/admin',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -189,7 +189,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -202,7 +202,7 @@ class TestUserGetMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.get(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -232,7 +232,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -245,7 +245,7 @@ class TestUserGetMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.get(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -275,7 +275,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -288,7 +288,7 @@ class TestUserGetMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.get(
-                '/v1/api/users/{}'.format(user.username),
+                '/v1/users/{}'.format(user.username),
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -331,7 +331,7 @@ class TestUserGetMethod(BaseTestCase):
 
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -344,7 +344,7 @@ class TestUserGetMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.get(
-                '/v1/api/users/{}'.format(user.username),
+                '/v1/users/{}'.format(user.username),
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',

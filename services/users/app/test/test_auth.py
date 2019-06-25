@@ -21,7 +21,7 @@ class TestAuthentication(BaseTestCase):
         save_user(user)
         with self.client:
             response = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 data=json.dumps({
                     'username': 'test',
                     'password': 'test'
@@ -51,7 +51,7 @@ class TestAuthentication(BaseTestCase):
         )
         with self.client:
             response = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 data=json.dumps({
                     'username': 'test',
                     'password': 'test'
@@ -76,7 +76,7 @@ class TestAuthentication(BaseTestCase):
         save_user(user)
         with self.client:
             response = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 data=json.dumps({
                     'username': 'test',
                     'password': '123'
@@ -101,7 +101,7 @@ class TestAuthentication(BaseTestCase):
 
         with self.client:
             response = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 data=json.dumps({
                     'username': 'test1',
                     'password': 'test'
@@ -119,7 +119,7 @@ class TestAuthentication(BaseTestCase):
     def test_register(self):
         with self.client:
             response = self.client.post(
-                '/v1/api/register',
+                '/v1/register',
                 data=json.dumps({
                     'username': 'test',
                     'password': 'test',
@@ -145,7 +145,7 @@ class TestAuthentication(BaseTestCase):
 
         with self.client:
             response = self.client.post(
-                '/v1/api/register',
+                '/v1/register',
                 data=json.dumps({
                     'username': 'test',
                     'password': 'test',
@@ -171,7 +171,7 @@ class TestAuthentication(BaseTestCase):
 
         with self.client:
             response = self.client.post(
-                '/v1/api/register',
+                '/v1/register',
                 data=json.dumps({
                     'username': 'example',
                     'password': 'test',
@@ -190,7 +190,7 @@ class TestAuthentication(BaseTestCase):
     def test_register_with_missing_usr(self):
         with self.client:
             response = self.client.post(
-                '/v1/api/register',
+                '/v1/register',
                 data=json.dumps({
                     'username': '',
                     'password': 'example',
@@ -209,7 +209,7 @@ class TestAuthentication(BaseTestCase):
     def test_register_with_missing_pwd(self):
         with self.client:
             response = self.client.post(
-                '/v1/api/register',
+                '/v1/register',
                 data=json.dumps({
                     'username': 'example',
                     'password': '',
@@ -228,7 +228,7 @@ class TestAuthentication(BaseTestCase):
     def test_register_with_invalid_email(self):
         with self.client:
             response = self.client.post(
-                '/v1/api/register',
+                '/v1/register',
                 data=json.dumps({
                     'username': 'example',
                     'password': 'example',

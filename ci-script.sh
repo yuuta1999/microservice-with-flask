@@ -14,6 +14,7 @@ dev() {
   docker-compose exec users python manage.py test
   inspect $? users 
   docker-compose exec users pylint --rcfile=.pylintrc --py3k app
+  docker-compose exec client yarn test
 }
 
 prod() {
@@ -23,6 +24,7 @@ prod() {
   docker-compose exec users python manage.py cov
   inspect $? users
   docker-compose exec users pylint --rcfile=.pylintrc --py3k app
+  docker-compose exec client yarn test
 }
 
 if [[ "${env}" == "development" ]]; then
@@ -30,6 +32,7 @@ if [[ "${env}" == "development" ]]; then
   dev
 elif [[ "${env}" == "production" ]]; then
   echo "Running app in production mode..."
+  prod
 fi
 
 if [ -n "${fails}" ]; then

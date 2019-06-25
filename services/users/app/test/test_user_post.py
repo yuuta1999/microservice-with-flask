@@ -25,7 +25,7 @@ class TestUserPostMethod(BaseTestCase):
         save_user(admin_r)
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -38,7 +38,7 @@ class TestUserPostMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.post(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -71,7 +71,7 @@ class TestUserPostMethod(BaseTestCase):
         save_user(user_r)
         with self.client:
             res_login = self.client.post(
-                '/v1/api/login',
+                '/v1/login',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -84,7 +84,7 @@ class TestUserPostMethod(BaseTestCase):
             data_login = json.loads(res_login.data.decode())
 
             response = self.client.post(
-                '/v1/api/users',
+                '/v1/users',
                 headers={
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
