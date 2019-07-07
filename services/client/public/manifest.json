@@ -1,6 +1,6 @@
 {
   "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "Full front-end project with Webpack, React",
   "icons": [
     {
       "src": "favicon.ico",
