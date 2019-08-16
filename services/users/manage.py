@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # users/manage.py
 import sys
 import unittest

@@ -1,0 +1,10 @@
+export const Login = {
+  REQUEST: 'LOGIN_REQUEST',
+  SUCCESS: 'LOGIN_SUCCESS',
+  FAILURE: 'LOGIN_FAILURE'
+}
+
+export const Logout = {
+  REQUEST: 'LOGOUT_REQUEST',
+  SUCCESS: 'LOGOUT_SUCCESS'
+}

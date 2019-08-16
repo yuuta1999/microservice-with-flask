@@ -31,7 +31,9 @@ module.exports = {
   "rules": {
     "semi": ["error", "never"],
     "comma-dangle": ["error", "never"],
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", {
+      "endOfLine": "auto"
+    }],
     "no-use-before-define": ["error", {
       "functions": false,
       "classes": true

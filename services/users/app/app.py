@@ -5,7 +5,7 @@ import os
 from flask import Flask
 
 from app.api.utils.extensions import (
-    db, bcrypt, jwt
+    db, bcrypt, jwt, cors
 )
 from app.api.utils.func import JSONEncoder
 
@@ -16,6 +16,7 @@ def create_app(app_info=None):
     app = Flask(__name__)
     app.config.from_object(os.environ.get('APP_SETTINGS'))
 
+    cors.init_app(app, origins=app.config.get('CORS_ORIGINS'), supports_credentials=True)
     db.init_app(app)
     bcrypt.init_app(app)
     jwt.init_app(app)

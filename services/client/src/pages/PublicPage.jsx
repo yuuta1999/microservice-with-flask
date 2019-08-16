@@ -6,13 +6,12 @@ import Footer from '../containers/FooterContainer'
 
 const PublicPage = props => {
   const { component: Component, route } = props
-  console.log(props)
   return (
-    <div>
+    <>
       <Header />
       <Component route={route} />
       <Footer />
-    </div>
+    </>
   )
 }
 

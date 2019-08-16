@@ -71,7 +71,6 @@ class LoginAPI(MethodView):
             'ok': True,
             'access_token': access_token,
             'msg': 'Logged in.',
-            'data': user
         }
         return make_response(jsonify(res)), 200
 
@@ -79,6 +78,7 @@ class RegisterAPI(MethodView):
     """Register endpoint
     """
     def post(self):
+        print(request.get_json())
         req = request.get_json()
         res = {}
 
@@ -94,6 +94,7 @@ class RegisterAPI(MethodView):
         username = data.get('username')
         password = data.get('password')
         email = data.get('email')
+        is_admin = data.get('admin', False)
 
         user = get_user_by_username(username, User)
 
@@ -130,7 +131,6 @@ class UserAPI(MethodView):
     def get(self, username=None):
         current_user = get_jwt_identity()
         res = {}
-
 
         if username is None or username == 'admin':
             if current_user == 'admin':

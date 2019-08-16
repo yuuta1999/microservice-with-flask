@@ -10,6 +10,11 @@ class BaseConfig(object):
     DEBUG = os.environ.get('FLASK_ENV') == 'development'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     ACCESS_TOKEN_EXPIRE = 30
+    CORS_ORIGINS = [
+        'http://localhost', 
+        'http://localhost:3000',
+        'http://localhost:8080'
+    ]
 
 class DevConfig(BaseConfig):
     """Environment variables used in development mode.

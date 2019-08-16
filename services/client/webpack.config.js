@@ -17,8 +17,27 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader']
       },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
+        test: /\.(css|sass|scss)$/i,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              url: true,
+              import: true,
+              importLoaders: 1,
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
         test: /\.svg$/,
@@ -51,7 +70,11 @@ module.exports = {
     port: 3000,
     host: '0.0.0.0',
     // ADD THIS LINE.
-    historyApiFallback: true
+    historyApiFallback: true,
+    watchOptions: {
+      aggregateTimeout: 500,
+      poll: 1000
+    }
   },
   plugins: [
     new WebpackManifestPlugin({

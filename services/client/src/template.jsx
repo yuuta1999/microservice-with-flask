@@ -16,7 +16,6 @@ const Template = () => {
       <Switch>
         {_.map(publicRoutes, (route, key) => {
           const { component, path } = route
-          console.log(path)
           return (
             <Route
               exact

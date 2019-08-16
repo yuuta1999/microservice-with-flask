@@ -1,0 +1,23 @@
+// Core bootstrap components
+@import "~bootstrap/scss/bootstrap";
+
+@import "./partials/sections";
+@import "./partials/dividers";
+@import "./partials/buttons";
+
+.card-body {
+  max-width: 400px;
+}
+
+
+@media (min-width: 1200px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+  .container {
+    max-width: 1040px;
+  }
+  .login-container {
+    max-width: 1140px;
+  }
+}
